@@ -20,12 +20,22 @@ namespace WebAPIClientes
             
             foreach(Usuario miUsuario in lista)
             {
-                if(miUsuario.User == usuario.User && miUsuario.Clave == usuario.Clave)
+                if (miUsuario.User == usuario.User)
                 {
-                    
+                    if(miUsuario.NLogins > 2)
+                    {
+                        result = "Usuario Bloqueado";
+                    }
+                    else if (miUsuario.Clave == usuario.Clave)
+                    {
                         result = "Usuario autenticado";
                         UsuariosManager.Actualizar(usuario);
-
+                    }
+                    else if (miUsuario.Clave != usuario.Clave)
+                    {
+                        usuario.NLogins = miUsuario.NLogins + 1;
+                        UsuariosManager.Actualizar(usuario);
+                    }
                 }
             } 
 
