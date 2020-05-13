@@ -38,7 +38,7 @@ namespace Taller.DataAccess
             //usuario.User = "pfernandez";
             SqlCommand comando = new SqlCommand("UpdateUsuario", conexion);
             //UPDATE usuarios SET ultimo_login = CURRENT_TIMESTAMP WHERE usuario = @usuario;
-            //UPDATE usuarios SET n_logins = @nlogin
+            //UPDATE usuarios SET n_logins = @nlogin WHERE usuario = @usuario;
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             comando.Parameters.Add(new SqlParameter("@usuario", usuario.User));
             comando.Parameters.Add(new SqlParameter("@nlogin", usuario.NLogins));
