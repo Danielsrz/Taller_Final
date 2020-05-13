@@ -38,9 +38,6 @@ namespace WebAPIClientes
                     }
                 }
             } 
-
-            if (false) result = "Usuario bloqueado";
-
             return result;
         }
 
